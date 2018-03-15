@@ -1,7 +1,6 @@
 import UIKit
-import XCPlayground
 
-public class MarbleSandbox: UIView {
+public class ZenSandbox: UIView {
     
     private let colors: [UIColor]
     private var marbles: [UIView] = []
@@ -12,6 +11,30 @@ public class MarbleSandbox: UIView {
     public let collisionBehavior: UICollisionBehavior
     public let gravityBehavior: UIGravityBehavior
     public let itemBehavior: UIDynamicItemBehavior
+    
+    public init() {
+        colors = [#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1), #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)]
+        
+        collisionBehavior = UICollisionBehavior(items: [])
+        gravityBehavior = UIGravityBehavior(items: [])
+        itemBehavior = UIDynamicItemBehavior(items: [])
+        
+        marblePadding = 2.0
+        itemBehavior.resistance = 2
+        useSquaresInsteadOfBalls = true
+        
+        super.init(frame: CGRect(x: 0, y: 0, width: 480, height: 320))
+        
+        backgroundColor = .white
+        fillBackground()
+        
+        animator = UIDynamicAnimator(referenceView: self)
+        animator?.addBehavior(collisionBehavior)
+        animator?.addBehavior(gravityBehavior)
+        animator?.addBehavior(itemBehavior)
+        
+        createMarbles()
+    }
     
     public init(colors: [UIColor]) {
         self.colors = colors
