@@ -29,9 +29,10 @@ public class ZenSandbox: UIView {
         fillBackground()
         
         animator = UIDynamicAnimator(referenceView: self)
-        animator?.addBehavior(collisionBehavior)
+        collisionBehavior.translatesReferenceBoundsIntoBoundary = true
         animator?.addBehavior(gravityBehavior)
         animator?.addBehavior(itemBehavior)
+        animator?.addBehavior(collisionBehavior)
         
         createMarbles()
     }
