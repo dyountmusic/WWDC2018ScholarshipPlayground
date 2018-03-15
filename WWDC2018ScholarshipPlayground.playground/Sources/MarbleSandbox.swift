@@ -101,6 +101,60 @@ public class MarbleSandbox: UIView {
             //gravityBehavior.addItem(marble)
             itemBehavior.addItem(marble)
             
+            switch index {
+            case 0:
+                // W
+                if let maskImage = UIImage(named: "W@3x.png") {
+                    let maskImageSized = imageWithImage(image: maskImage, scaledToSize: marbleSize)
+                    marble.mask = UIImageView(image: maskImageSized)
+                }
+            case 1:
+                // W
+                if let maskImage = UIImage(named: "W@3x.png") {
+                    let maskImageSized = imageWithImage(image: maskImage, scaledToSize: marbleSize)
+                    marble.mask = UIImageView(image: maskImageSized)
+                }
+            case 2:
+                // D
+                if let maskImage = UIImage(named: "D@3x.png") {
+                    let maskImageSized = imageWithImage(image: maskImage, scaledToSize: marbleSize)
+                    marble.mask = UIImageView(image: maskImageSized)
+                }
+            case 3:
+                // C
+                if let maskImage = UIImage(named: "C@3x.png") {
+                    let maskImageSized = imageWithImage(image: maskImage, scaledToSize: marbleSize)
+                    marble.mask = UIImageView(image: maskImageSized)
+                }
+            case 4:
+                // 2
+                if let maskImage = UIImage(named: "2@3x.png") {
+                    let maskImageSized = imageWithImage(image: maskImage, scaledToSize: marbleSize)
+                    marble.mask = UIImageView(image: maskImageSized)
+                }
+            case 5:
+                // 0
+                if let maskImage = UIImage(named: "0@3x.png") {
+                    let maskImageSized = imageWithImage(image: maskImage, scaledToSize: marbleSize)
+                    marble.mask = UIImageView(image: maskImageSized)
+                }
+            case 6:
+                // 1
+                if let maskImage = UIImage(named: "1@3x.png") {
+                    let maskImageSized = imageWithImage(image: maskImage, scaledToSize: marbleSize)
+                    marble.mask = UIImageView(image: maskImageSized)
+                }
+            case 7:
+                // 8
+                if let maskImage = UIImage(named: "8@3x.png") {
+                    let maskImageSized = imageWithImage(image: maskImage, scaledToSize: marbleSize)
+                    marble.mask = UIImageView(image: maskImageSized)
+                }
+            default:
+                // no mask
+                print()
+            }
+            
         }
     }
     
@@ -148,6 +202,14 @@ public class MarbleSandbox: UIView {
         if (keyPath == "center") {
             setNeedsDisplay()
         }
+    }
+    
+    func imageWithImage(image: UIImage, scaledToSize newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+        image.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
     
 }
