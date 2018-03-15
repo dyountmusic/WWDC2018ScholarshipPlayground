@@ -3,38 +3,14 @@
 //: GitHub: dyountmusic
   
 import UIKit
-
 import PlaygroundSupport
 
-class MainViewController : UIViewController {
-    
-    var name: String {
-        get { return UserDefaults.standard.string(forKey: "name") ?? "" }
-        set { UserDefaults.standard.set(newValue, forKey: "name") }
-    }
-    
-    override func viewDidLoad() {
-        // Do Cool Stuff Here!
-        
-    }
-    
-    override func loadView() {
-        let view = UIView()
-        view.backgroundColor = .white
+let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
+containerView.backgroundColor = UIColor.lightGray
 
-        // Setting
-        name = "Daniel"
-        
-        // Printing
-        print(name)
-        
-        // Checking Disk Value
-        UserDefaults.standard.string(forKey: "name")!
-        
-        self.view = view
-    }
-}
+let setupHelper = UISetUpHelper.init()
 
+setupHelper.presentProfileImage(view: containerView)
+setupHelper.presentGreetingLabel(view: containerView)
 
-PlaygroundPage.current.liveView = MainViewController()
-
+PlaygroundPage.current.liveView = containerView
