@@ -22,8 +22,8 @@ public class ZenSandbox: UIView {
         marblePadding = 2.0
         itemBehavior.resistance = 2
         useSquaresInsteadOfBalls = true
-        
         super.init(frame: CGRect(x: 0, y: 0, width: 480, height: 320))
+        
         
         backgroundColor = .white
         fillBackground()
@@ -44,6 +44,7 @@ public class ZenSandbox: UIView {
         itemBehavior = UIDynamicItemBehavior(items: [])
         
         super.init(frame: CGRect(x: 0, y: 0, width: 480, height: 320))
+        autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
 
         backgroundColor = .white
         
@@ -82,16 +83,7 @@ public class ZenSandbox: UIView {
     }
     
     func fillBackground() {
-        UIGraphicsBeginImageContextWithOptions(super.frame.size, true, 0.0)
-        UIImage(named: "zenGardenBG.jpg")?.draw(in: super.bounds)
-        
-        if let image = UIGraphicsGetImageFromCurrentImageContext() {
-            UIGraphicsEndImageContext()
-            super.backgroundColor = UIColor(patternImage: image)
-        } else {
-            UIGraphicsEndImageContext()
-            print("Image not avaliable")
-        }
+        super.backgroundColor = .white
     }
     
     func createMarbles() {
